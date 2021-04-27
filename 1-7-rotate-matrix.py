@@ -17,3 +17,11 @@ for i in matrix:
 # [4, 5, 6, 7]
 # [8, 9, 10, 11]
 # [12, 13, 14, 15]
+
+# Start with a brute force, inefficient solution
+def rotate_matrix(matrix):
+    # Create a new matrix so we don't overwrite original data
+    new_matrix = matrix
+
+
+rotate_matrix(matrix)
