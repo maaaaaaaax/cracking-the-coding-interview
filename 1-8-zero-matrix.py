@@ -36,6 +36,12 @@ def zero_matrix(matrix):
                     new_matrix[cell][column] = 0
                 continue
 
+    # Iterate through the new matrix. If the cell is a 1, replace the value with the original value
+    for row in range(0, rows):
+        for cell in range(0, columns):
+            if new_matrix[row][cell] == 1:
+                new_matrix[row][cell] = matrix[row][cell]
+
     # Print the new matrix as a sanity check
     # for row in new_matrix:
     #     print(row)
