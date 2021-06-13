@@ -47,41 +47,56 @@ function rotate_matrix(matrix)
     }
     let layers_left = Math.floor(matrix.length / 2);
     let layers_removed = 0;
-    let target_row = 0;
-    let target_column = 0;
-    let temp = 0;
+    let next = matrix[0][0];
+    let current = matrix[0][0]
     while (layers_removed < layers_left)
     {
+        current = matrix[layers_removed][layers_removed];
         // Print the top row
         for (let i = 0 + layers_removed; i < ((matrix.length - layers_removed) - 1); i++)
         {
-            console.log(matrix[0 + layers_removed][i]);
+            next = matrix[0 + layers_removed][i + 1];
+            matrix[0 + layers_removed][i + 1] = current;
+            current = next;
+            // console.log(matrix[0 + layers_removed][i]);
         }
         // Print a line break
-        console.log("");
+        // console.log("");
         // Print the right column
         for (let row = 0 + layers_removed; row < (matrix.length - (1 + layers_removed)); row++)
         {
-            console.log(matrix[row][matrix.length - (1 + layers_removed)]);
+            next = matrix[row + 1][matrix.length - (1 + layers_removed)];
+            matrix[row + 1][matrix.length - (1 + layers_removed)] = current;
+            current = next;
+            // console.log(matrix[row][matrix.length - (1 + layers_removed)]);
         }
         // Print a line break
-        console.log("");
+        // console.log("");
         // Print the bottom row
         for (let column = matrix.length - (1 + layers_removed); column > (0 + layers_removed); column--)
         {
-            console.log(matrix[matrix.length - (1 + layers_removed)][column]);
+            next = matrix[matrix.length - (1 + layers_removed)][column - 1]
+            matrix[matrix.length - (1 + layers_removed)][column - 1] = current;
+            current = next;
+            // console.log(matrix[matrix.length - (1 + layers_removed)][column]);
         }
         // Print a line break
-        console.log("");
+        // console.log("");
         // Print the left column
         for (let row = matrix.length - (1 + layers_removed); row > (0 + layers_removed); row--)
         {
-            console.log(matrix[row][0 + layers_removed])
+            next = matrix[row - 1][0 + layers_removed];
+            matrix[row - 1][0 + layers_removed] = current;
+            current = next;
+            // console.log(matrix[row][0 + layers_removed])
         }
         // Print a line break
-        console.log("");
+        // console.log("");
         layers_removed++;
     }
+    return matrix;
 }
 
-rotate_matrix(even_matrix);
+console.log(rotate_matrix(even_matrix));
+console.log("");
+console.log(rotate_matrix(odd_matrix));
